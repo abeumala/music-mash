@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const genreSchema = new Schema ({
     name: String,
     songs: [songsSchema],
+    hello: String
 
 })
 
