@@ -1,3 +1,6 @@
+// everything regarding auth operations (login / signup)
+// need to add route for restricted content here!
+
 const express = require('express');
 const passportRouter = express.Router();
 // Require user model
