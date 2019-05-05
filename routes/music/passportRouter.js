@@ -2,6 +2,7 @@
 // need to add route for restricted content here!
 const express = require('express');
 const router = express.Router();
+const voteRouter = require('./vote');
 // Require user model
 const User = require('../../models/user');
 // Add bcrypt to encrypt passwords
@@ -10,6 +11,8 @@ const bcryptSalt = 10;
 // Add passport
 const passport = require('passport');
 // const ensureLogin = require('connect-ensure-login');
+
+router.use('/vote', voteRouter);
 
 router.get('/signup', (req, res, next) => {
   res.render('signup');

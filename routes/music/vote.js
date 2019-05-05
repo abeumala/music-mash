@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const passportRouter = require('./passportRouter');
 // const User = require('../../models/user');
-const Song = require('../../models/songs');
+const Song = require('../../models/song');
 const SpotifyManager = require('../../public/javascripts/spotifyManager');
 const manager = new SpotifyManager();
 let firstSong;
 let secondSong;
 
 manager.init();
-router.use('/', passportRouter);
 
 // Custom middleware to check if user is logged in
 const checkIfAuthenticated = (req, res, next) => {
@@ -55,6 +53,7 @@ router.get('/download-playlist', (req, res, next) => {
 });
 
 router.get('/', checkIfAuthenticated, (req, res, next) => {
+  console.log('getting songs');
   Song.aggregate([{ $sample: { size: 1 } }])
     .then((songs) => {
       firstSong = songs[0];

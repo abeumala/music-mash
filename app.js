@@ -15,7 +15,7 @@ const router = require('./routes/index');
 const app = express();
 
 mongoose
-  .connect('mongodb://localhost/music-mash', { useNewUrlParser: true })
+  .connect(`mongodb://localhost/${config.DB_NAME}`, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
