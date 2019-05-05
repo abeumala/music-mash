@@ -22,8 +22,11 @@ router.get('/download-playlist', (req, res, next) => {
   manager.getSongsForPlaylist('1sm4V7pZ9LmPyENFLLu38r')
     .then((result) => {
       console.log('inside manager');
+      console.log(result);
       result.forEach((song) => {
-        const { name, uri } = song;
+        // const { name, uri } = song;
+        const uri = song.uri;
+        const name = song.title;
 
         Song.findOne({ name })
           .then((song) => {

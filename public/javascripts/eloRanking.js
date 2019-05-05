@@ -28,7 +28,7 @@ class Elo {
       console.log(this.songARating, this.songBRating);
       console.log();
       console.log(this.kFactor * (1 - this.expWinA));
-      this.songARating = this.songARating + (this.kFactor * (1 - this.expWinA));
+      this.songARating = this.songARating + this.kFactor * (1 - this.expWinA);
       this.songBRating = this.songBRating - this.kFactor * (1 - this.expWinB);
       console.log(this.songARating, this.songBRating);
       //  console.log(this.songARating);
@@ -39,3 +39,5 @@ class Elo {
     return (this.songARating, this.songBRating);
   }
 }
+
+module.exports = Elo;
