@@ -1,8 +1,7 @@
 // everything regarding auth operations (login / signup)
 // need to add route for restricted content here!
-
 const express = require('express');
-const passportRouter = express.Router();
+const router = express.Router();
 // Require user model
 const User = require('../../models/user');
 // Add bcrypt to encrypt passwords
@@ -10,13 +9,13 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 // Add passport
 const passport = require('passport');
-const ensureLogin = require('connect-ensure-login');
+// const ensureLogin = require('connect-ensure-login');
 
-passportRouter.get('/signup', (req, res, next) => {
+router.get('/signup', (req, res, next) => {
   res.render('signup');
 });
 
-passportRouter.post('/signup', (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   const { username, password } = req.body;
 
   if (username === '' || password === '') {
@@ -39,21 +38,21 @@ passportRouter.post('/signup', (req, res, next) => {
         if (err) {
           res.render('signup', { message: 'Something went wrong' });
         } else {
-          res.redirect('/');
+          res.redirect('/vote');
         }
       });
     })
     .catch((err) => console.log(err));
 });
 
-passportRouter.get('/login', (req, res, next) => {
+router.get('/login', (req, res, next) => {
   res.render('login');
 });
 
-passportRouter.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/vote',
   failureRedirect: '/login',
   passReqToCallback: true
 }));
 
-module.exports = passportRouter;
+module.exports = router;

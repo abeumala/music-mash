@@ -11,7 +11,6 @@ const passport = require('./config/passport-config'); // passport module setup a
 const passportStrategySetup = require('./config/passport-local-strategy');
 
 const router = require('./routes/index');
-const passportRouter = require('./routes/music/passportRouter');
 
 const app = express();
 
@@ -52,7 +51,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', router);
-app.use('/', passportRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -67,7 +65,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('index', { message: 'error' });
 });
 
 module.exports = app;
