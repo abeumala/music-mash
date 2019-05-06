@@ -42,16 +42,17 @@ router.get('/', checkIfAuthenticated, async (req, res, next) => {
 
     renderSongs();
   } else {
-    if (false) {
+    if (true) {
       newElo.winA = true;
       newElo.winB = false;
       newElo.setRanking();
+      renderSongs();
     } else if (false) {
       newElo.winA = false;
       newElo.winB = true;
       newElo.setRanking();
+      renderSongs();
     }
-    renderSongs();
   }
 });
 

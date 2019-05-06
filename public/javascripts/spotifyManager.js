@@ -22,8 +22,6 @@ class SpotifyManager {
     return new Promise((resolve, reject) => { // promise to return asynchronos function in another file, a promise that waits;
       dis.manager.getPlaylistTracks(playlistId) // for another promise to be fulfilled then returns, if not we cant return promise form getSongsForPlaylist
         .then((data) => {
-          console.log(data);
-          console.log(data.items);
           data.body.items.map((item) => {
             dis.songs.push(item.track);
           });
