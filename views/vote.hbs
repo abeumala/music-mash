@@ -21,21 +21,12 @@
 		<a href="/">Back</a>
 	</div>
 </div>
-    {{!-- {{#firstSong}}
-    {{secondSong}}
-      <iframe src="https://open.spotify.com/embed/track/{{firstSong.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      <a href="/vote/?idLeft={{firstSong.spotifyId}}&?idRight={{secondSong.spotifyId}}">Vote</a>
-      <span>Current rating: {{firstSong.rating}}</span>
-      <iframe src="https://open.spotify.com/embed/track/{{secondSong.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      <a href="/vote/?idRight={{firstSong.spotifyId}}&?idLeft={{secondSong.spotifyId}}">Vote</a>
-      <span>Current rating: {{secondSong.rating}}</span>
-    {{/secondSong}}
-    {{/firstSong}} --}}
-  {{#each songs}}
-	<iframe src="https://open.spotify.com/embed/track/{{this.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote/?id={{this.spotifyId}}">Vote</a>
-	<span>Current rating: {{this.rating}}</span>
-  {{/each}}
+	<iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	<a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}">Vote</a>
+	<span>Current rating: {{songs.0.rating}}</span>
+  <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}">Vote</a>
+	<span>Current rating: {{songs.1.rating}}</span>
   {{#if err}}
     {{err}}
   {{/if}}

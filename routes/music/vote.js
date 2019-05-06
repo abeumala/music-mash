@@ -4,6 +4,8 @@ const router = express.Router();
 const Song = require('../../models/song');
 const SpotifyManager = require('../../public/javascripts/spotifyManager');
 const manager = new SpotifyManager();
+let firstSong;
+let secondSong;
 
 const Elo = require('../../public/javascripts/eloRanking');
 let newElo = new Elo();
@@ -17,40 +19,44 @@ const checkIfAuthenticated = (req, res, next) => {
 };
 
 router.get('/', checkIfAuthenticated, async (req, res, next) => {
-  let firstSong;
-  let secondSong;
   let songsArr = await Song.find();
-  console.log(songsArr.length);
-  let randomIndex = Math.floor(Math.random() * songsArr.length); // check songs length
-  console.log('hello michelle');
-  console.log(randomIndex);
-  let id = req.query;
+  console.log(req.query);
   var renderSongs = () => {
+    let randomIndex = Math.floor(Math.random() * (songsArr.length - 1));
     firstSong = songsArr[randomIndex];
-    let rating = firstSong.rating;
-    let maxRating = rating + 50;
-    let minRating = rating - 50;
-    Song.findOne({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.name } }] })
+    let firstSongRating = Math.floor(firstSong.rating);
+    let maxRating = firstSongRating + 50;
+    let minRating = firstSongRating - 50;
+    Song.find({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.title } }] })
       .then((result) => {
-        secondSong = result;
-        console.log(firstSong, secondSong);
+        let randomIndex1 = Math.floor(Math.random() * (result.length - 1));
+        console.log(result);
+        secondSong = result[randomIndex1];
+        console.log(secondSong);
         res.render('vote', { songs: [firstSong, secondSong] });
-      });
+      })
+      .catch((err) => console.log(err));
   };
   if (Object.keys(req.query).length === 0) {
     console.log('inside id length');
 
     renderSongs();
   } else {
-    if (true) {
+    if (req.query.idFirstLeft && req.query.idFirstRight) {
+      let songAId = req.query.idFirstLeft;
+      let songBId = req.query.idFirstRight;
+      console.log('first won');
       newElo.winA = true;
       newElo.winB = false;
-      newElo.setRanking();
+      newElo.setRanking(firstSong.rating, secondSong.rating, songAId, songBId);
       renderSongs();
-    } else if (false) {
+    } else if (req.query.idSecondLeft && req.query.idSecondRight) {
+      let songBId = req.query.idSecondLeft;
+      let songAId = req.query.idSecondRight;
+      console.log('second won');
       newElo.winA = false;
       newElo.winB = true;
-      newElo.setRanking();
+      newElo.setRanking(firstSong.rating, secondSong.rating, songAId, songBId);
       renderSongs();
     }
   }
