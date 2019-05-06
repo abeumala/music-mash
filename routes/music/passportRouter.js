@@ -36,7 +36,7 @@ router.post('/signup', (req, res, next) => {
       const hashPassword = bcrypt.hashSync(password, salt);
 
       const newUser = new User({ username, password: hashPassword });
-
+      console.log(newUser);
       newUser.save((err) => {
         if (err) {
           res.render('signup', { message: 'Something went wrong' });

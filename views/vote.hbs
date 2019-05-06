@@ -23,7 +23,7 @@
 </div>
 {{#each songs}}
 	<iframe src="https://open.spotify.com/embed/track/{{this.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote">Vote</a>
+	<a href="/vote/?id={{this.spotifyId}}">Vote</a>
 	<span>Current rating: {{this.rating}}</span>
 {{/each}}
 {{#if err}}

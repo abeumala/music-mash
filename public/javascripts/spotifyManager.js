@@ -1,5 +1,3 @@
-// game event listeners
-
 const SpotifyWebApi = require('spotify-web-api-node');
 
 class SpotifyManager {
@@ -36,4 +34,5 @@ class SpotifyManager {
     });
   }
 }
+
 module.exports = SpotifyManager;

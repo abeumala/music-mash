@@ -8,8 +8,9 @@ class Elo {
     this.gFactor = 300;
     this.expWinA = 0;
     this.expWinB = 1;
-    this.winA = true;
+    this.winA = false;
     this.winB = false;
+
     // in query need to change value of winner to true
   }
 

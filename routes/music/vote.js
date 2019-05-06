@@ -6,6 +6,8 @@ const SpotifyManager = require('../../public/javascripts/spotifyManager');
 const manager = new SpotifyManager();
 let firstSong;
 let secondSong;
+const Elo = require('../../public/javascripts/eloRanking');
+let newElo = new Elo();
 
 manager.init();
 
@@ -56,21 +58,38 @@ router.get('/download-playlist', (req, res, next) => {
 });
 
 router.get('/', checkIfAuthenticated, (req, res, next) => {
-  console.log('getting songs');
-  Song.aggregate([{ $sample: { size: 1 } }])
-    .then((songs) => {
-      firstSong = songs[0];
-      let rating = firstSong.rating;
-      let maxRating = rating + 50;
-      let minRating = rating - 50;
-      Song.findOne({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.name } }] })
-        .then((result) => {
-          secondSong = result;
-          res.render('vote', { 'songs': [firstSong, secondSong] });
-        })
-        .catch((err) => console.log(err));
-    })
-    .catch((err) => console.log(err));
+  console.log(Song.length);
+  let randomIndex = Math.floor(Math.random() * Song.length);
+  // console.log('getting songs');
+  let id = req.query;
+  console.log(id);
+  if (id === null) {
+    Song.findOne([{ spotifyId: Song[randomIndex].spotifyId }])
+      .then((song) => {
+        firstSong = song;
+        let rating = firstSong.rating;
+        let maxRating = rating + 50;
+        let minRating = rating - 50;
+        Song.findOne({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.name } }] })
+          .then((result) => {
+            secondSong = result;
+            res.render('vote', { 'songs': [firstSong, secondSong] });
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  } else if (id !== null) {
+    if (id === firstSong.spotifyId) {
+      newElo.winA = true;
+      newElo.winB = false;
+      newElo.setRanking();
+    } else if (id === secondSong.spotifyId) {
+      newElo.winA = false;
+      newElo.winB = true;
+      newElo.setRanking();
+    }
+    res.redirect('/');
+  }
 });
 
 module.exports = router;
