@@ -10,9 +10,8 @@ class SpotifyManager {
   }
   init () {
     let dis = this;
-    this.manager.clientCredentialsGrant()
+    return this.manager.clientCredentialsGrant()
       .then((data) => {
-        // console.log(data);
         dis.manager.setAccessToken(data.body['access_token']);
       })
       .catch((err) => console.log(err));
