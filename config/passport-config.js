@@ -1,4 +1,4 @@
-passport = require('passport');
+const passport = require('passport');
 const User = require('../models/user');
 
 // ( this happens when user logs in successfully)
