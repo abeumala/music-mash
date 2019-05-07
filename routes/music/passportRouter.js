@@ -56,6 +56,8 @@ router.post('/login', passport.authenticate('local', {
   successRedirect: '/vote',
   failureRedirect: '/login',
   passReqToCallback: true
-}));
+}), (req, res) => {
+  req.session.user_id = req.user.id;
+});
 
 module.exports = router;
