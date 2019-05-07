@@ -23,9 +23,11 @@
 </div>
 	<iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 	<a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}">Vote</a>
+  <a href="/ranking">Rank</a>
 	<span>Current rating: {{songs.0.rating}}</span>
   <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}">Vote</a>
+  <a href="/ranking">Rank</a>
 	<span>Current rating: {{songs.1.rating}}</span>
   {{#if err}}
     {{err}}
