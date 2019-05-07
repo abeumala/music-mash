@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 // Add passport
 const passport = require('passport');
+const zxcvbn = require('zxcvbn');
 // const ensureLogin = require('connect-ensure-login');
 
 router.use('/vote', voteRouter);
@@ -25,13 +26,19 @@ router.post('/signup', (req, res, next) => {
     res.render('signup', { message: 'Indicate username and password' }); //
     return;
   }
-
+  if (zxcvbn(password).score < 3) {
+    res.render('signup',
+      { errorMessage: 'Password too weak, try again' }
+    );
+    return;
+  }
   User.findOne({ username })
     .then((user) => {
       if (user !== null) {
         res.render('signup', { message: 'The username already exists' });
         return;
       }
+
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPassword = bcrypt.hashSync(password, salt);
 
@@ -41,7 +48,7 @@ router.post('/signup', (req, res, next) => {
         if (err) {
           res.render('signup', { message: 'Something went wrong' });
         } else {
-          res.redirect('/');
+          res.redirect('/vote');
         }
       });
     })
@@ -53,7 +60,7 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/vote',
   failureRedirect: '/login',
   passReqToCallback: true
 }), (req, res) => {

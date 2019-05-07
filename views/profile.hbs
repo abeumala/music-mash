@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <nav class='navbar'>
+      <div class="nav-name">
+        <span>Music Mash</span>
+      </div>
+   </nav>
+   <form action="/" method="POST" class="form-container">
+ <div class="form-group">
+{{#each user}}
+   <input type="submit" value="">
+   <a href="/{{this.username}}">Delete User!</a>
+{{/each}}
+
+ </div>
+</form>
+  </body>
+</html>

@@ -21,7 +21,7 @@ a {
 
 .navbar {
   display: flex;
-  height: 20%;
+  height: 15%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -82,4 +82,17 @@ height: 100%;
   align-content: center;
   justify-content: center;
   margin: 5%;
+}
+
+.music-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 70vh;
+  margin-top: 50px;
+}
+
+.vote-link{
+  text-align: center;
 }

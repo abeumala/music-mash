@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const User = require('../../models/user');
+const User = require('../../models/user');
 const Song = require('../../models/song');
 const SpotifyManager = require('../../public/javascripts/spotifyManager');
 const manager = new SpotifyManager();

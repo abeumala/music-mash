@@ -9,25 +9,31 @@
       <div class="nav-name">
         <span>Music Mash</span>
       </div>
-     <span>{{user.username}}</span>
+      {{#each user}}
+     <span>{{this.username}}</span>
+     <a href="/profile/{{this.username}}"></a>
+     {{/each}}
      </nav>
+</div>
+<div class="music-container">
 	<div>
 		<a href="/">Back</a>
 	</div>
-</div>
+	<span class="vote-link">Current rating: {{songs.0.rating}}</span>
 	<iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}">Vote</a>
-	<span>Current rating: {{songs.0.rating}}</span>
+	<a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}" class="vote-link">Vote</a>
+	<span class="vote-link">Current rating: {{songs.1.rating}}</span>
   <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}">Vote</a>
-	<span>Current rating: {{songs.1.rating}}</span>
-  {{#if err}}
-    {{err}}
-  {{/if}}
+	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}" class="vote-link">Vote</a>
 
   <button>
     	<a href="/rank">View Rankings</a>
   </button>
+</div>
+  {{#if err}}
+    {{err}}
+  {{/if}}
+
    
   </body>
 </html>
