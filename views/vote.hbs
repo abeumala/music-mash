@@ -8,24 +8,22 @@
   <body>
     <nav class="navbar navbar-expand{-sm|-md|-lg|-xl}">
      <h1>Music Mash</h1>
-     <ul class="navbar-nav">
-       <li class="nav-item">
-         <button><a href="/login">Login</a></button>
-         </li>
-       <li class="nav-item">
-         <button><a href="/signup">SignUp</a></button>
-         </li>
-     </ul>
      </nav>
 	<div>
 		<a href="/">Back</a>
 	</div>
 </div>
-{{#each songs}}
-	<iframe src="https://open.spotify.com/embed/track/{{this.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote/?id={{this.spotifyId}}">Vote</a>
-	<span>Current rating: {{this.rating}}</span>
-{{/each}}
+
+
+	<iframe src="https://open.spotify.com/embed/track/{{firstSong.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	<a href="/vote/?idLeft={{firstSong.spotifyId}}">Vote</a>
+	<span>Current rating: {{firstSong.rating}}</span>
+	<iframe src="https://open.spotify.com/embed/track/{{secondSong.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	<a href="/vote/&idRight={{secondSong.spotityId}}">Vote</a>
+	<span>Current rating: {{secondSong.rating}}</span>
+
+
+
 {{#if err}}
 	{{err}}
 {{/if}}
