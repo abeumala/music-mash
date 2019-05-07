@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../../models/user');
+// const User = require('../../models/user');
 const Song = require('../../models/song');
 const SpotifyManager = require('../../public/javascripts/spotifyManager');
 const manager = new SpotifyManager();
@@ -14,7 +14,7 @@ manager.init();
 
 // Custom middleware to check if user is logged in
 const checkIfAuthenticated = (req, res, next) => {
-  if (!req.user) res.redirect('/'); // if not logged in / authenticated
+  if (!req.user) res.redirect('/signup'); // if not logged in / authenticated
   else next(); // if logged in / authenticated
 };
 

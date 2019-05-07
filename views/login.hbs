@@ -5,23 +5,26 @@
     
   </head>
   <body>
-    <nav>
-     <h1>Music Mash</h1>
+    <nav class='navbar'>
+      <div class="nav-name">
+        <span>Music Mash</span>
+      </div>
    </nav>
-   <form action="/login" method="POST">
- <div class="form-group row">
-   <label for="username">Username:</label>
+   <form action="/login" method="POST" class="form-container">
+ <div class="form-group">
+   <label for="username">Username:  </label>
    <div>
    <input type="text" id="username" name="username"/>
    </div>
  </div>
- <div>
-   <label for="password">Password:</label>
+ <div class="form-group">
+   <label for="password">Password:  </label>
    <input type="password" id="password" name="password"/>
  </div>
  <div>
    <input type="submit" value="">
-   <button>Login</button>
+  <a href="/">Login!</a>
+   
  </div>
 </form>
   
