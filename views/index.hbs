@@ -9,14 +9,19 @@
       <div class="nav-name">
         <span class="nav-name-index">Music Mash</span>
       </div>
+      {{#if user}}
+      <a href="/profile">{{this.username}}</a>
+      
+      {{else}}
+
       <div id="list-container">
         <a href="/login">Login</a>
         <a href="/signup">SignUp</a>
       </div>
+      {{/if}}
      </nav>
     <div>
       <a href="/vote" class="funky" /> <img src="https://media.giphy.com/media/tABPdYzhpUtBC/giphy.gif" </a>
-      
     </div>  
     </div>
     

@@ -152,6 +152,7 @@ form{
   background: rgba(0,0,0,.1);
   margin: 0 auto;
 }
+
 label{
  font-family: 'Montserrat', sans-serif;;
   letter-spacing: 6px;
@@ -159,6 +160,7 @@ label{
   font-size: .8em;
   color: #FFF;
 }
+
 input[type=text]{
   display: inline-block;
   border: none;
@@ -169,6 +171,7 @@ input[type=text]{
   background: transparent;
   color: #FFF;
 }
+
 input[type=password]{
   display: inline-block;
   border: none;
@@ -179,16 +182,19 @@ input[type=password]{
   background: transparent;
   color: #FFF;
 }
+
 input[type=text]:focus{
   background: none;
   border: none;
   color: #FFF;
 }
+
 input[type=password]:focus{
   background: none;
   border: none;
   color: #FFF;
 }
+
 button{
   background: transparent;
   color: #FFF;
@@ -211,13 +217,16 @@ padding: 10px;
 justify-content: flex-start;
 align-items: center;
 }
+
 .username {
   color: white;
 }
+
 .back-button {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  
+  margin: 20px;
 }
 
 .first-rankings-button{

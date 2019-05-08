@@ -25,7 +25,6 @@ router.post('/', (req, res, next) => {
   User.findByIdAndDelete({ _id })
     .then(() => {
       console.log(_id);
-
       res.redirect('/');
     })
     .catch((err) => {
@@ -33,4 +32,8 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.post('/', (req, res, next) => {
+  req.logout();
+  res.redirect('/');
+});
 module.exports = router;
