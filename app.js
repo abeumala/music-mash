@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const config = require('./config/config');
 // Session and Passport modules
 const session = require('express-session');
 const passport = require('./config/passport-config'); // passport module setup and initial load
