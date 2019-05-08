@@ -1,11 +1,10 @@
 const SpotifyManager = require('../public/javascripts/spotifyManager');
 const mongoose = require('mongoose');
-const config = require('../config/config');
 const manager = new SpotifyManager();
 const Song = require('../models/song');
 
 mongoose
-  .connect(`mongodb://localhost/${config.DB_NAME}`, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
