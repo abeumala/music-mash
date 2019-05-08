@@ -28,6 +28,7 @@ const getsongs = async () => {
             const title = name || 'Unknown';
             const spotifyId = uri.split(':')[2] || 'NoId'; // want to get the 3rd parameter of a string, separated by ":" to append it to spotify embed
             const rating = 1500;
+
             // Math.floor(Math.random() * (1700 - 1400) + 1400);
             console.log('new rating', rating);
 

@@ -6,9 +6,11 @@
   </head>
   <body>
     <nav class="navbar">
+     
       <div class="nav-name">
-        <span>Music Mash</span>
+         <span>Music Mash</span>
       </div>
+         
       {{#each user}}
      <span>{{this.username}}</span>
      <a href="/profile/{{this.username}}"></a>
@@ -16,19 +18,22 @@
      </nav>
 </div>
 <div class="music-container">
-	<div>
-		<a href="/">Back</a>
-	</div>
-	<span class="vote-link">Current rating: {{songs.0.rating}}</span>
-	<iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}" class="vote-link">Vote</a>
-	<span class="vote-link">Current rating: {{songs.1.rating}}</span>
-  <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}" class="vote-link">Vote</a>
+	
+	<div class="iframe-container" id="first-iframe">
+    <iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="iframe"></iframe>
+	  <a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}" class="vote-link">♡</a>
+  </div>
 
-  <button>
-    	<a href="/rank">View Rankings</a>
-  </button>
+ <div class="iframe-container">
+    <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="iframe"></iframe>
+  	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}" class="vote-link">♡</a>
+ </div>
+
+ 
+    	<a href="/rank" class="back-button first-rankings-button"><button>Rankings</button></a>
+       <a href="/" class="back-button"><button>Back</button></a> 
+ 
+ 
 </div>
   {{#if err}}
     {{err}}
