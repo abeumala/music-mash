@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
+@-webkit-keyframes slide {
+  from { background-position: 0 0; }
+  to { background-position: -400px 0; }
+}
+html{
+  height: 100%;
+  width: 100%;
+}
 body {
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   color: white;
   height: 100%;
+
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -26,7 +34,7 @@ a {
 
 .navbar {
   display: flex;
-  height: 50px;
+  min-height: 50px !important;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -43,6 +51,18 @@ height: 100%;
 
 }
 
+.nav-name-index{
+  color: black;
+}
+.nav-name-vote {
+  font-size: 25px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 3%;
+color: #1db954;
+height: 100%;
+}
 .navbar a{
  display: flex;
  flex-direction: row;
@@ -209,5 +229,57 @@ align-items: center;
   width: 100%;
   display: flex;
   justify-content: center;
+ }
+
+ .whatever{
+   width: 100%;
+   height: 100%;
+
+	 color: #fff;
+	 background: linear-gradient(-45deg, #191c23,#0f9b0f, hsl(139, 76%, 10%), #23D5AB);
+  
+ background-size: 400% 400%;
+ -webkit-animation: Gradient 15s ease infinite;
+ -moz-animation: Gradient 15s ease infinite;
+ animation: Gradient 15s ease infinite;
+ }
+
+
  
+
+
+@-webkit-keyframes Gradient {
+ 0% {
+   background-position: 0% 50%
+ }
+ 50% {
+   background-position: 100% 50%
+ }
+ 100% {
+   background-position: 0% 50%
+ }
+}
+
+@-moz-keyframes Gradient {
+ 0% {
+   background-position: 0% 50%
+ }
+ 50% {
+   background-position: 100% 50%
+ }
+ 100% {
+   background-position: 0% 50%
+ }
+}
+
+@keyframes Gradient {
+ 0% {
+   background-position: 0% 50%
+ }
+ 50% {
+   background-position: 100% 50%
+ }
+ 100% {
+   background-position: 0% 50%
+ }
 }
