@@ -10,6 +10,7 @@ const Song = require('../../models/song');
 // router.use('/', passportRouter);
 
 const checkIfAuthenticated = (req, res, next) => {
+  console.log(req);
   if (!req.user) res.redirect('/'); // if not logged in / authenticated
   else next(); // if logged in / authenticated
 };

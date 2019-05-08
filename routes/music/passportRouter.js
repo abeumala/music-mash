@@ -48,7 +48,7 @@ router.post('/signup', (req, res, next) => {
         if (err) {
           res.render('signup', { message: 'Something went wrong' });
         } else {
-          res.redirect('/vote');
+          res.redirect('/login');
         }
       });
     })
@@ -65,6 +65,12 @@ router.post('/login', passport.authenticate('local', {
   passReqToCallback: true
 }), (req, res) => {
   req.session.user_id = req.user.id;
+});
+
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect('/');
 });
 
 module.exports = router;
