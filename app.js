@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const config = require('./config/config');
@@ -15,7 +16,7 @@ const router = require('./routes/index');
 const app = express();
 
 mongoose
-  .connect(`mongodb://localhost/${config.DB_NAME}`, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
