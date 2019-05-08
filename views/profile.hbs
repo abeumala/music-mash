@@ -9,14 +9,14 @@
         <span>Music Mash</span>
       </div>
    </nav>
-   <form action="/" method="POST" class="form-container">
- <div class="form-group">
-{{#each user}}
-   <input type="submit" value="">
-   <a href="/{{this.username}}">Delete User!</a>
-{{/each}}
+   <form action="/profile" method="post" class="form-container">
 
- </div>
+
+   <p>{{user.username}}</p>
+   <a href="/profile/{{user._id}}">Delete User!</a>
+   <button type="submit" class="delete-button"> delete me</button>
+ 
+
 </form>
   </body>
 </html>

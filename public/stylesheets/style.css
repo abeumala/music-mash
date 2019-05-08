@@ -96,3 +96,7 @@ height: 100%;
 .vote-link{
   text-align: center;
 }
+
+.delete-button {
+  color: white;
+}

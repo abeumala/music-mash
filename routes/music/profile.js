@@ -7,10 +7,11 @@ const checkIfAuthenticated = (req, res, next) => {
   else next(); // if logged in / authenticated
 };
 
-router.get('/:username', checkIfAuthenticated, (req, res, next) => {
-  const { username } = req.params;
-  User.find({ username })
+router.get('/', checkIfAuthenticated, (req, res, next) => {
+  const { _id } = req.user._id;
+  User.find({ _id })
     .then((user) => {
+      console.log(user);
       res.render('profile', { user });
     })
     .catch((err) => {
@@ -18,11 +19,12 @@ router.get('/:username', checkIfAuthenticated, (req, res, next) => {
     });
 });
 
-router.post('/:username', (req, res, next) => {
-  const { username } = req.params;
-  User.findOneAndDelete({ username })
+router.post('/', (req, res, next) => {
+  const { _id } = req.user._id;
+  console.log(_id);
+  User.findByIdAndDelete({ _id })
     .then(() => {
-      console.log(req.query);
+      console.log(_id);
 
       res.redirect('/');
     })
