@@ -9,19 +9,23 @@
         <span>Music Mash</span>
       </div>
    </nav>
-   <form action="/signup" method="POST" class="form-container">
- <div class="form-group">
-   <label for="username">Username:</label>
-   <input type="text" id="username" name="username"/>
+ <form action="/signup" method="POST">
+ <div >
+     <label for="username"> Userame: </label> <br>
+  <input type="text" placeholder="your username" name="username"/>
+   <br>
  </div>
- <div class="form-group">
-   <label for="password">Password:</label>
-   <input type="password" id="password" name="password"/>
+ <div >
+  <label for="password"> Password: </label> </br>
+  <input type="password" placeholder="your password" name="password" />
+<br>
  </div>
  <div>
-   <input type="submit" value="sign UP">
-   <a href="/vote">Sign Up!</a>
+  {{!-- <input type="submit" > --}}
+  
+  <a href="/vote"><button tyoe="submit">SignUp!</button></a>  
  </div>
 </form>
-  </body>
+
+</body>
 </html>

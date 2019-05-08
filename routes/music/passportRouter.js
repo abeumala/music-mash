@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 // Add passport
 const passport = require('passport');
-const zxcvbn = require('zxcvbn');
+// const zxcvbn = require('zxcvbn');
 // const ensureLogin = require('connect-ensure-login');
 
 router.use('/vote', voteRouter);
@@ -26,12 +26,12 @@ router.post('/signup', (req, res, next) => {
     res.render('signup', { message: 'Indicate username and password' }); //
     return;
   }
-  if (zxcvbn(password).score < 3) {
-    res.render('signup',
-      { errorMessage: 'Password too weak, try again' }
-    );
-    return;
-  }
+  // if (zxcvbn(password).score < 3) {
+  //   res.render('signup',
+  //     { errorMessage: 'Password too weak, try again' }
+  //   );
+  //   return;
+  // }
   User.findOne({ username })
     .then((user) => {
       if (user !== null) {
