@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const User = require('../models/user');
 const passportRouter = require('./music/passportRouter');
 const rankRouter = require('./music/rank');
 const voteRouter = require('./music/vote');
@@ -12,9 +12,16 @@ router.use('/vote', voteRouter);
 
 router.use('/', passportRouter);
 
-/* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
+  if (!req.user) res.render('index', { title: 'Express' });
+  else {
+    const { _id } = req.user._id;
+    User.findOne({ _id })
+      .then((user) => {
+        res.render('index', { user });
+      })
+      .catch((err) => console.log(err));
+  }
 });
 
 module.exports = router;

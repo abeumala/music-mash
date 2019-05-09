@@ -25,7 +25,6 @@ router.post('/', (req, res, next) => {
   User.findByIdAndDelete({ _id })
     .then(() => {
       console.log(_id);
-
       res.redirect('/');
     })
     .catch((err) => {

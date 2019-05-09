@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-  </head>
-  <body>
+
     <nav class='navbar'>
       <div class="nav-name">
         <a href="/"><span class="nav-name-index">Music Mash</span></a>
       </div>
-      <a href="/logout"><img src="./images/logout.png" alt="logout"></a>   
+    
    </nav>
- <form action="/signup" method="POST">
- <div >
+ <form action="/signup" method="POST" class="form-container">
+ <div class="form-group">
      <label for="username"> Username: </label> <br>
   <input type="text" placeholder="username" name="username"/>
    <br>
  </div>
- <div >
+ <div class="form-group">
   <label for="password"> Password: </label> </br>
   <input type="password" placeholder="password" name="password" />
 <br>
@@ -25,6 +20,4 @@
   <button class="button-basic-styles" type="submit">Sign up</button> 
  </div>
 </form>
-
-</body>
-</html>
+</form>

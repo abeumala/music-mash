@@ -22,7 +22,8 @@ const checkIfAuthenticated = (req, res, next) => {
 
 router.get('/', checkIfAuthenticated, async (req, res, next) => {
   let songsArr = await Song.find();
-  console.log(req.query);
+
+  // console.log(req.query);
   var renderSongs = () => {
     let randomIndex = Math.floor(Math.random() * (songsArr.length - 1));
     firstSong = songsArr[randomIndex];
@@ -32,13 +33,15 @@ router.get('/', checkIfAuthenticated, async (req, res, next) => {
     Song.find({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.title } }] })
       .then((result) => {
         let randomIndex1 = Math.floor(Math.random() * (result.length - 1));
-        console.log(result);
+        // console.log(result);
         secondSong = result[randomIndex1];
-        console.log(secondSong);
-        res.render('vote', { songs: [firstSong, secondSong] });
+        // console.log(secondSong);
+        res.render('vote', { songs: [firstSong, secondSong], user: req.user });
       })
       .catch((err) => console.log(err));
+    // trying to render username in nav
   };
+
   if (Object.keys(req.query).length === 0) {
     console.log('inside id length');
 
