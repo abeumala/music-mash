@@ -1,28 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-  </head>
-  <body>
-    <nav class='navbar'>
-      <div class="nav-name">
-        <a href="/"><span class="nav-name-index">Music Mash</span></a>
-      </div>
-      <div class="list-container">
+<nav class='navbar'>
+  <div class="nav-name">
+    <a href="/"><span class="nav-name-index">Music Mash</span></a>
+  </div>
+  <div class="username-link">
 
-       {{#each user}}
+    {{#each user}}
     <p class="username">{{this.username}}</p>
-     {{/each}}
+    {{/each}}
 
-      </div>
-   </nav>
-   <form action="/profile" method="post" class="form-container">
-  
-   <button type="submit" class="delete-button"> Delete Profile</button>
-  </form>
+  </div>
+</nav>
 
-<form action="/profile" method="post" class="form-container">
-  <button type="submit" class="delete-button"> Log Out!</button>
+<div class="profile-container">
+
+ <div class="profile-form-div">
+
+    <form action="/profile" method="post" class="form-profile">
+
+      <button type="submit" class="profile-button"> Delete Profile </button>
+
+    </form>
+ </div>
+
+<div class="profile-form-div">
+
+<form action="/logout" method="post" class="form-profile">
+
+      <button type="submit" class="profile-button">Log Out!</button>
+
 </form>
-  </body>
-</html>
+</div>
+
+
+
+  {{!-- <div class="form-container">
+
+  <button type="submit" class="profile-button"><a href="/logout">Log Out!</a></button>
+
+  </div> --}}
+
+</div>

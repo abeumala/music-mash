@@ -4,8 +4,11 @@
         <div class="nav-name">
           <a href="/"><span class="nav-name-index">Music Mash</span></a>
         </div>
+       <div class="username-link">
+
          {{#if user}}
           <a href="/profile">{{user.username}}</a>
+       </div>
       
       {{else}}
       <div id="list-container">
@@ -16,10 +19,8 @@
       </nav>
       <div class="landing-container">
         <a class="landing-image-container" href="/vote">
-          <div id="titleContainer">
-            <h4>VOTE</h4>
-          </div>
-          <img id="landing-image" src="./images/landing.jpg" alt="Playlists" style="width:100%;">
+          ♫
+          
         </a>
       </div>
     </div>
