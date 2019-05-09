@@ -24,17 +24,4 @@ router.get('/', (req, res, next) => {
   }
 });
 
-// router.get('/', (req, res, next) => {
-//   if (!req.user) res.render('index', { title: 'Express' });
-//   else {
-//     const { _id } = req.user._id;
-//     User.find({ _id })
-//       .then((user) => {
-//         console.log(user);
-//         res.render('index', { title: 'Express' }, { user });
-//       })
-//       .catch((err) => console.log(err));
-//   }
-// });
-
 module.exports = router;

@@ -18,8 +18,7 @@ router.get('/', checkIfAuthenticated, (req, res, next) => {
   // console.log(Song);
   Song.aggregate([{ $sort: { rating: -1 } }, { $limit: 10 }])
     .then((result) => {
-      //   console.log('result', { result });
-      res.render('ranking', { result });
+      res.render('ranking', { result, user: req.user });
     })
     .catch((err) => {
       console.log(err);

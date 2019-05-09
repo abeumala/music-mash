@@ -1,154 +1,13 @@
-{{!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-   
-  </head>
-  <body>
-   <nav class='navbar'>
-      <div class="nav-name">
-        <span>Music Mash</span>
-      </div>
-     </nav>
-</div>
-{{--}}
-{{!-- {{#each result}}
-                        
-                
-                    <p class="team">{{this.title}}}</p>
-                    <p class="points">{{this.rating}}}</p>
-              
-                      {{/each}} --}}
-{{!--
- <div class="container">
-            <header>
-        <h1>Arnau's Top 10 Songs</h1>
-            </header>
-            <div class="wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Title</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                      {{#each result}}
-                        <tr>
-                
-                    <td class="rank">{{@index}}</td>
-                    <td class="team">{{this.title}}}</td>
-                    <td class="points">{{this.rating}}}</td>
-              
-                      </tr>
-                      {{/each}}
-                      
-                        <tr>
-                
-                <td class="rank">1.</td>
-                <td class="team">{{result.0.title}}}</td>
-                <td class="points">{{result.0.rating}}}</td>
-              
-                      </tr>
-                      <tr>
-                
-                <td class="rank">2.</td>
-                <td class="team">{{result.1.title}}}</td>
-                <td class="points">{{result.1.rating}}}</td>
-              
-                      </tr> 
-                       <tr>
-                
-                <td class="rank">3.</td>
-                <td class="team">{{result.2.title}}}</td>
-                <td class="points">{{result.2.rating}}}</td>
-              
-                      </tr>
-                      <tr>
-                
-                <td class="rank">4.</td>
-                <td class="team">{{result.3.title}}}</td>
-                <td class="points">{{result.3.rating}}}</td>
-              
-                      </tr>  
-                      <tr>
-                
-                <td class="rank">5.</td>
-                <td class="team">{{result.4.title}}}</td>
-                <td class="points">{{result.4.rating}}}</td>
-              
-                      </tr> 
-                       <tr>
-                
-                <td class="rank">6.</td>
-                <td class="team">{{result.5.title}}}</td>
-                <td class="points">{{result.5.rating}}}</td>
-              
-                      </tr> 
-                       <tr>
-                
-                <td class="rank">7.</td>
-                <td class="team">{{result.6.title}}}</td>
-                <td class="points">{{result.6.rating}}}</td>
-              
-                      </tr> 
-                       <tr>
-                
-                <td class="rank">8.</td>
-                <td class="team">{{result.7.title}}}</td>
-                <td class="points">{{result.7.rating}}}</td>
-              
-                      </tr>  
-                      <tr>
-                
-                <td class="rank">9.</td>
-                <td class="team">{{result.8.title}}}</td>
-                <td class="points">{{result.8.rating}}}</td>
-              
-                      </tr> 
-                       <tr>
-                
-                <td class="rank">10.</td>
-                <td class="team">{{result.9.title}}}</td>
-                <td class="points">{{result.9.rating}}}</td>
-              
-                      </tr>
-           
-              
-                    </tbody>
-                </table>
-            </div>
-        </div>  
-
-
-
- <ol class="ranking-list">
-
-{{#each result}}
-<li class="list-item">{{this.title}}  {{this.rating}}</li>
-
-{{/each}}
-</ol>  -
-
- <a href="/"><button>Back</button></a>  
-
- {{#if err}}
- {{err}}
- {{/if}}
-
-
-   
-  </body>
-</html>
- --}}
-
- <div class="container">
+<div class="container">
 <nav class='navbar'>
       <div class="nav-name">
-        <span>Music Mash</span>
+       <a href="/"><span class="nav-name-index">Music Mash</span></a>
       </div>
+     
+      {{#if user}}
+     <a href="/profile"><span>{{user.username}}</span></a>
+     {{/if}}
+      
      </nav>
 </div>
 
@@ -159,7 +18,7 @@
 {{/each}}
  </ol>  
 </div>
- <a href="/" class="back-button"><button>Back</button></a>  
+ 
 
 
 

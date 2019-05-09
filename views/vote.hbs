@@ -4,12 +4,12 @@
       <div class="nav-name-vote">
         <a href="/"><span class="nav-name-index">Music Mash</span></a>
       </div>
-      <a href="/logout"><img src="./images/logout.png" alt="logout"></a>   
-      {{#each user}}
-     <span>{{this.username}}</span>
-     <a href="/profile/{{this.username}}"></a>
-     {{/each}}
+ 
+      {{#if user}}
+     <a href="/profile"><span>{{user.username}}</span></a>
+     {{/if}}
      </nav>
+
 </div>
 <div class="music-container">
     
@@ -23,7 +23,7 @@
  </div>
  
         <a href="/rank" class="back-button first-rankings-button"><button>Rankings</button></a>
-       <a href="/" class="back-button"><button>Back</button></a> 
+
  
  
 </div>
