@@ -271,12 +271,10 @@ align-items: center;
   justify-content: center;
  }
  .landing-image-container {
-   display: flex;
-  margin-top: 15vh;
-  
-   font-size: 200px;
-
-  color: black;
+    display: flex;
+    margin-top: 15vh;
+    font-size: 200px;
+    color: black;
  }
  /* #titleContainer {
    position: absolute;

@@ -28,8 +28,8 @@ router.get('/', checkIfAuthenticated, async (req, res, next) => {
     let randomIndex = Math.floor(Math.random() * (songsArr.length - 1));
     firstSong = songsArr[randomIndex];
     let firstSongRating = Math.floor(firstSong.rating);
-    let maxRating = firstSongRating + 50;
-    let minRating = firstSongRating - 50;
+    let maxRating = firstSongRating + 60;
+    let minRating = firstSongRating - 60;
     Song.find({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.title } }] })
       .then((result) => {
         let randomIndex1 = Math.floor(Math.random() * (result.length - 1));
