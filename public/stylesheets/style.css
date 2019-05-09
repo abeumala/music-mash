@@ -297,6 +297,7 @@ align-items: center;
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-top: 20vh;
 }
 
  .form-profile {
@@ -310,4 +311,5 @@ align-items: center;
     left: auto;
     transform: none;
     position: static;
+    padding: 10px;
  }
