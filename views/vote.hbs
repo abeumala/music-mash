@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-   
-  </head>
-  <body>
+
     <nav class="navbar">
      
       <div class="nav-name-vote">
-         <span>Music Mash</span>
+        <a href="/"><span class="nav-name-index">Music Mash</span></a>
       </div>
-         
+      <a href="/logout"><img src="./images/logout.png" alt="logout"></a>   
       {{#each user}}
      <span>{{this.username}}</span>
      <a href="/profile/{{this.username}}"></a>
@@ -18,19 +12,17 @@
      </nav>
 </div>
 <div class="music-container">
-	
-	<div class="iframe-container" id="first-iframe">
-    <iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="iframe"></iframe>
-	  <a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}" class="vote-link">♡</a>
+    
+    <div class="iframe-container" id="first-iframe">
+    <iframe src="https://open.spotify.com/embed/track/{{songs.0.spotifyId}}" width="250" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media" class="iframe"></iframe>
+      <a href="/vote?idFirstLeft={{songs.0._id}}&idFirstRight={{songs.1._id}}" class="vote-link"><div class="heart"></div></a>
   </div>
-
  <div class="iframe-container">
-    <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="iframe"></iframe>
-  	<a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}" class="vote-link">♡</a>
+    <iframe src="https://open.spotify.com/embed/track/{{songs.1.spotifyId}}" width="250" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media" class="iframe"></iframe>
+    <a href="/vote?idSecondLeft={{songs.1._id}}&idSecondRight={{songs.0._id}}" class="vote-link"><div class="heart"></div></a>
  </div>
-
  
-    	<a href="/rank" class="back-button first-rankings-button"><button>Rankings</button></a>
+        <a href="/rank" class="back-button first-rankings-button"><button>Rankings</button></a>
        <a href="/" class="back-button"><button>Back</button></a> 
  
  
@@ -38,7 +30,6 @@
   {{#if err}}
     {{err}}
   {{/if}}
-
    
   </body>
 </html>

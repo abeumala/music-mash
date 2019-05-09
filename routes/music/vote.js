@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../../models/user');
+// const User = require('../../models/user');
 const Song = require('../../models/song');
 const SpotifyManager = require('../../public/javascripts/spotifyManager');
 const manager = new SpotifyManager();
@@ -20,7 +20,8 @@ const checkIfAuthenticated = (req, res, next) => {
 
 router.get('/', checkIfAuthenticated, async (req, res, next) => {
   let songsArr = await Song.find();
-  console.log(req.query);
+
+  // console.log(req.query);
   var renderSongs = () => {
     let randomIndex = Math.floor(Math.random() * (songsArr.length - 1));
     firstSong = songsArr[randomIndex];
@@ -28,15 +29,26 @@ router.get('/', checkIfAuthenticated, async (req, res, next) => {
     let maxRating = firstSongRating + 50;
     let minRating = firstSongRating - 50;
     Song.find({ $and: [{ rating: { $gte: minRating } }, { rating: { $lte: maxRating } }, { title: { $ne: firstSong.title } }] })
-      .then((result) => {
+      .then((result, user) => {
         let randomIndex1 = Math.floor(Math.random() * (result.length - 1));
-        console.log(result);
+        // console.log(result);
         secondSong = result[randomIndex1];
-        console.log(secondSong);
-        res.render('vote', { songs: [firstSong, secondSong] });
+        // console.log(secondSong);
+        res.render('vote', { songs: [firstSong, secondSong], user });
       })
       .catch((err) => console.log(err));
+    // trying to render username in nav
+    // const { _id } = req.user._id;
+    // User.find({ _id })
+    //   .then((user) => {
+    //     console.log(user);
+    //     res.render('vote', { user });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
+
   if (Object.keys(req.query).length === 0) {
     console.log('inside id length');
 

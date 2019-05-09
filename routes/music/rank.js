@@ -15,10 +15,10 @@ const checkIfAuthenticated = (req, res, next) => {
 };
 
 router.get('/', checkIfAuthenticated, (req, res, next) => {
-  console.log(Song);
+  // console.log(Song);
   Song.aggregate([{ $sort: { rating: -1 } }, { $limit: 10 }])
     .then((result) => {
-      console.log('result', { result });
+      //   console.log('result', { result });
       res.render('ranking', { result });
     })
     .catch((err) => {

@@ -8,9 +8,16 @@
       <div class="nav-name">
         <span>Music Mash</span>
       </div>
+      <div class="list-container">
+
+       {{#each user}}
+    <p class="username">{{this.username}}</p>
+     {{/each}}
+
+      </div>
    </nav>
    <form action="/profile" method="post" class="form-container">
-   <p class="username">{{user.username}}</p>
+  
    <button type="submit" class="delete-button"> Delete Profile</button>
   </form>
 

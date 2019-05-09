@@ -12,17 +12,29 @@ router.use('/vote', voteRouter);
 
 router.use('/', passportRouter);
 
-/* GET home page. */
 router.get('/', (req, res, next) => {
   if (!req.user) res.render('index', { title: 'Express' });
   else {
     const { _id } = req.user._id;
-    User.find({ _id })
+    User.findOne({ _id })
       .then((user) => {
-        res.render('index', { title: 'Express' }, { user });
+        res.render('index', { user });
       })
       .catch((err) => console.log(err));
   }
 });
+
+// router.get('/', (req, res, next) => {
+//   if (!req.user) res.render('index', { title: 'Express' });
+//   else {
+//     const { _id } = req.user._id;
+//     User.find({ _id })
+//       .then((user) => {
+//         console.log(user);
+//         res.render('index', { title: 'Express' }, { user });
+//       })
+//       .catch((err) => console.log(err));
+//   }
+// });
 
 module.exports = router;

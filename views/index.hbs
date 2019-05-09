@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-  </head>
-  <body>
+
     <div class="whatever">
-    <nav class='navbar'>
-      <div class="nav-name">
-        <span class="nav-name-index">Music Mash</span>
-      </div>
-      {{#if user}}
-      <a href="/profile">{{this.username}}</a>
+      <nav class='navbar'>
+        <div class="nav-name">
+          <a href="/"><span class="nav-name-index">Music Mash</span></a>
+        </div>
+         {{#if user}}
+          <a href="/profile">{{user.username}}</a>
       
       {{else}}
-
       <div id="list-container">
         <a href="/login">Login</a>
         <a href="/signup">SignUp</a>
       </div>
       {{/if}}
-     </nav>
-    <div>
-      <a href="/vote" class="funky" /> <img src="https://media.giphy.com/media/tABPdYzhpUtBC/giphy.gif" </a>
-    </div>  
+      </nav>
+      <div class="landing-container">
+        <a class="landing-image-container" href="/vote">
+          <div id="titleContainer">
+            <h4>VOTE</h4>
+          </div>
+          <img id="landing-image" src="./images/landing.jpg" alt="Playlists" style="width:100%;">
+        </a>
+      </div>
     </div>
     
-  </body>
-</html>
+ 
